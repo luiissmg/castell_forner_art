@@ -52,6 +52,7 @@ body {
     padding: 0.1875rem 0.5625rem; /* 3px 9px */
     box-sizing: border-box;
     position: relative;
+    flex-wrap: wrap; /* Asegura que los elementos se ajusten en pantallas pequeñas */
 }
 
 .social-media a {
@@ -74,6 +75,7 @@ body {
     color: #80c4ca;
     font-style: italic;
     white-space: nowrap;
+    z-index: 1; /* Asegura que el texto esté por encima de otros elementos */
 }
 
 #dynamic-phrase {
@@ -87,9 +89,9 @@ body {
     transform: translateY(-1.25rem);
 }
 
-
 .email-contact {
     margin-left: auto;
+    text-align: right;
 }
 
 .email-contact a {
@@ -112,23 +114,73 @@ body {
 .social-media .icono:hover {
     transform: scale(1.1);
 }
-/* General Styles (Desktop First) */
-/* Ya tienes estilos iniciales bien configurados */
 
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .preheader {
+        justify-content: center; /* Centra los elementos cuando la pantalla es más pequeña */
+        flex-direction: column; /* Cambia la dirección a columna para mejor organización */
+        text-align: center;
+        padding: 0.5rem; /* Aumenta el espacio de padding en pantallas pequeñas */
+    }
+
+    .social-media {
+        margin-bottom: 1rem; /* Añade espacio entre redes sociales y el texto */
+    }
+
+    .short-phrases {
+        position: static; /* Cambia la posición estática para evitar que se sobreponga */
+        transform: none; /* Restablece el desplazamiento */
+        font-size: 0.9rem; /* Reduce el tamaño del texto */
+    }
+
+    .email-contact {
+        margin-left: 0;
+        margin-top: 1rem; /* Da espacio entre el correo y el resto de elementos */
+    }
+
+    .email-contact a {
+        font-size: 1rem; /* Ajusta el tamaño del correo */
+    }
+
+    .social-media .icono {
+        width: 1rem; /* Reduce el tamaño de los íconos */
+        height: 1rem; /* Ajusta la altura de los íconos */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .preheader {
+        padding: 0.25rem; /* Reduce el padding */
+    }
+
+    .short-phrases {
+        font-size: 0.8rem; /* Ajusta aún más el tamaño del texto */
+    }
+
+    .email-contact a {
+        font-size: 0.9rem; /* Reduce aún más el tamaño del correo */
+    }
+}
+
+/*Header Section*/
 header {
     position: relative;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    align-items: center; /* Centra los elementos verticalmente */
+    justify-content: space-between; /* Espacia los elementos de nav */
     background: #a4d3d7;
     color: #fff;
-    padding: 1.25rem; /* 20px */
+    padding: 1.25rem; /* 10px */
     height: auto;
     box-sizing: border-box;
+    flex-wrap: wrap; /* Permitir que los elementos salten a otra línea si es necesario */
 }
 
 header .logo {
-    flex: 1;
+    position: absolute; /* Posición absoluta para centrar */
+    left: 50%; /* Mitad del contenedor */
+    transform: translateX(-50%); /* Centrado absoluto en X */
     text-align: center;
 }
 
@@ -138,6 +190,12 @@ header .logo h1 {
     font-size: 3.125rem; /* 50px */
     text-align: center;
     margin: 0;
+}
+
+header nav {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end; /* Los enlaces se mantienen a la derecha */
 }
 
 nav ul {
@@ -169,8 +227,16 @@ nav ul li a:hover {
     header {
         flex-direction: column; /* Cambia la dirección a columna */
         text-align: center;
+        padding: 2rem 1rem; /* Más espacio vertical */
     }
 
+    header .logo {
+        position: relative; /* Cambia el logo al flujo normal */
+        left: auto;
+        transform: none; /* Elimina el centrado absoluto */
+        margin-bottom: 1rem; /* Espacio entre el logo y el menú */
+    }
+    
     header .logo h1 {
         font-size: 2rem; /* Reduce el tamaño del logo en pantallas pequeñas */
     }
@@ -204,84 +270,80 @@ nav ul li a:hover {
 }
 
 /* Hero Section */
+/* Hero Section */
 .hero {
     position: relative;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh; /* Se asegura de que ocupe toda la altura de la ventana */
+    display: flex; /* Flexbox para organización */
+    flex-direction: column; /* Coloca los elementos en una columna */
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente */
     background-image: url('img/hero/imagenfondo.JPG');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    text-align: center; /* Centra el texto */
+    padding: 2rem; /* Espaciado interno */
+    box-sizing: border-box;
 }
 
 .hero-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
     color: white;
     font-size: 2rem;
     font-family: 'Cormorant', sans-serif;
-    text-align: center;
-    text-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.9); /* 2px 2px 5px */
-    width: 80%;
+    text-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.9); /* Sombra para mejor visibilidad */
+    margin-bottom: 2rem; /* Espacio entre el texto principal y el subtexto */
+    padding: 0 1rem; /* Asegura que el texto no toque los bordes */
+    width: 100%;
     max-width: 62.5rem; /* 1000px */
-    padding: 0.625rem 1.25rem; /* 10px 20px */
 }
 
 .hero-subtext {
-    position: absolute;
-    top: 65%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
     color: white;
     font-size: 1rem;
-    text-align: center;
-    text-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.7); /* 2px 2px 5px */
-    width: 80%;
+    font-family: 'Cormorant', sans-serif;
+    text-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.7); /* Sombra más suave */
+    padding: 0 1rem; /* Asegura que el texto no toque los bordes */
+    width: 100%;
     max-width: 62.5rem; /* 1000px */
-    padding: 0.625rem 1.25rem; /* 10px 20px */
 }
 
 /* Responsive adjustments */
 @media screen and (max-width: 768px) {
     .hero {
-        height: 80vh; /* Reduce altura para pantallas más pequeñas */
+        min-height: auto; /* Permite que la altura se ajuste al contenido */
+        padding: 4rem 1rem; /* Espaciado interno */
     }
 
     .hero-text {
         font-size: 1.5rem; /* Reduce tamaño de fuente del texto principal */
-        width: 90%; /* Aumenta el ancho para mejor visibilidad */
+        margin-bottom: 1.5rem; /* Ajusta espaciado */
     }
 
     .hero-subtext {
         font-size: 0.875rem; /* Ajusta tamaño de fuente del subtexto */
-        top: 60%; /* Ajusta la posición del subtexto */
     }
 }
 
 @media screen and (max-width: 480px) {
     .hero {
-        height: auto; /* Permite que se ajuste según el contenido */
-        padding: 2rem 0; /* Añade espacio arriba y abajo */
+        padding: 2rem 1rem; /* Espaciado reducido para móviles */
     }
 
     .hero-text {
         font-size: 1.2rem; /* Más pequeño para móviles */
-        width: 95%;
+        margin-bottom: 1rem; /* Ajusta el espacio */
     }
 
     .hero-subtext {
-        font-size: 0.75rem; /* Aún más pequeño para pantallas muy pequeñas */
-        top: 55%; /* Ajusta para evitar desbordamientos */
+        font-size: 0.75rem; /* Tamaño más pequeño */
     }
 }
 
 /* Gallery */
 .gallery {
-    padding: 0.625rem; /* 10px */
+    padding: 1rem;
     text-align: center;
 }
 
@@ -295,33 +357,40 @@ nav ul li a:hover {
     transition: transform 0.3s ease;
 }
 
-.gallery a:hover {
-    transform: scale(1.05);
-}
-
 .art-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr)); /* 200px */
-    gap: 1rem; /* Añade espacio entre los elementos */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajuste automático con tamaño mínimo */
+    gap: 1rem; /* Espacio entre los elementos */
 }
 
 .art-item {
-    text-align: center;
+    display: flex;
+    flex-direction: column; /* Asegura que el texto esté debajo de la imagen */
+    align-items: center;
+    overflow: hidden; /* Oculta el exceso de las imágenes */
+    background-color: #fff; /* Fondo gris claro */
+    text-align: center; /* Centra el texto */
+}
+
+.art-item a {
+    display: block;
+    width: 100%;
+    height: 450px; /* Aumenta la altura para que las imágenes sean más grandes */
 }
 
 .art-item img {
     width: 100%;
-    max-height: 25rem; /* 400px */
-    object-fit: cover;
-    transition: transform 0.3s;
+    height: 100%;
+    object-fit: cover; /* Ajusta las imágenes para llenar la caja */
+    transition: transform 0.3s ease; /* Suaviza el zoom */
 }
 
-.art-item img:hover {
-    transform: scale(1.05);
+.art-item a:hover img {
+    transform: scale(1.1); /* Zoom al pasar el ratón */
 }
 
 .art-item p {
-    margin-top: 0.625rem; /* 10px */
+    margin: 0.625rem 0; /* Espaciado entre la imagen y el texto */
     font-size: 1.5rem;
     font-family: 'Cormorant', sans-serif;
     color: #333;
@@ -330,11 +399,11 @@ nav ul li a:hover {
 /* Responsive adjustments */
 @media screen and (max-width: 768px) {
     .gallery a {
-        font-size: 2rem; /* Reduce el tamaño del texto en dispositivos medianos */
+        font-size: 2rem; /* Texto más pequeño */
     }
 
-    .art-item img {
-        max-height: 20rem; /* Reduce la altura de las imágenes */
+    .art-item a {
+        height: 400px; /* Ajusta la altura en dispositivos medianos */
     }
 
     .art-item p {
@@ -344,20 +413,20 @@ nav ul li a:hover {
 
 @media screen and (max-width: 480px) {
     .gallery a {
-        font-size: 1.5rem; /* Texto más pequeño para móviles */
-        margin-bottom: 0.625rem; /* Ajusta el margen inferior */
+        font-size: 1.5rem; /* Texto más pequeño */
+        margin-bottom: 0.625rem;
     }
 
     .art-grid {
-        gap: 0.5rem; /* Reduce el espacio entre elementos en móviles */
+        gap: 0.5rem; /* Reduce el espacio entre elementos */
     }
 
-    .art-item img {
-        max-height: 15rem; /* Reduce aún más la altura de las imágenes */
+    .art-item a {
+        height: 350px; /* Ajusta la altura en móviles */
     }
 
     .art-item p {
-        font-size: 1rem; /* Texto pequeño para pantallas pequeñas */
+        font-size: 1rem; /* Texto más pequeño */
     }
 }
 
@@ -712,55 +781,6 @@ nav ul li a:hover {
         font-size: 1.5em;
     }
 }
-
-/* Contenedor del video a pantalla completa */
-.fullscreen-video {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Video a pantalla completa */
-.fullscreen-video video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -1;
-    object-fit: cover;
-}
-
-/* Opcional: Si quieres texto encima del video */
-.fullscreen-video h1 {
-    position: absolute;
-    color: white;
-    font-size: 3em;
-    z-index: 1;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-    text-align: center; /* Centra el texto */
-}
-
-/* Media queries para pantallas más pequeñas */
-@media screen and (max-width: 768px) {
-    .fullscreen-video h1 {
-        font-size: 2em; /* Ajuste de tamaño del texto */
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .fullscreen-video h1 {
-        font-size: 1.5em; /* Ajuste de tamaño del texto */
-    }
-}
-
 /* Contenedor de la sección de pedidos */
 .custom-orders-section {
     background-color: #80c4ca;
